@@ -31,4 +31,9 @@
         android:title="@string/menuitem_print">
     </item>
 
+    <item
+        android:id="@+id/image"
+        android:showAsAction="ifRoom"
+        android:title="@string/menuitem_image">
+    </item>
 </menu>

@@ -4,6 +4,7 @@ package com.deitel.doodlz;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -27,6 +28,7 @@ public class DoodleFragment extends Fragment
    
    // value used to determine whether user shook the device to erase
    private static final int ACCELERATION_THRESHOLD = 100000;
+private static final int RESULT_LOAD_IMAGE = 0;
 
    // called when Fragment's view needs to be created
    @Override
@@ -174,6 +176,13 @@ public class DoodleFragment extends Fragment
          case R.id.print:     
             doodleView.printImage(); // print the current images
             return true; // consume the menu event
+            
+         case R.id.image:     
+             Intent i = new Intent(
+             Intent.ACTION_PICK,
+            		 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI); // save the current image
+             		startActivityForResult(i, RESULT_LOAD_IMAGE);
+             return true;
       } // end switch
 
       return super.onOptionsItemSelected(item); // call super's method
